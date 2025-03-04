@@ -5,6 +5,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
+const OPENAI_API_KEY = "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";
+const ELEVENLABS_API_KEY = "sk_68c074132abc9c86952f5be7e6f182dac4d18815d79695ed";
+const ELEVENLABS_VOICE_ID = "t5jyWhrVoC4rsMf2fTLW";
+
 export default function VidolPrototype() {
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState("");
@@ -23,12 +27,11 @@ export default function VidolPrototype() {
   };
 
   const fetchChatResponse = async (message) => {
-    const apiKey = process.env.OPENAI_API_KEY;
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
+        Authorization: `Bearer ${OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
         model: "gpt-4",
@@ -40,14 +43,11 @@ export default function VidolPrototype() {
   };
 
   const fetchVoiceResponse = async (text) => {
-    const voiceApiKey = process.env.ELEVENLABS_API_KEY;
-    const voiceId = "t5jyWhrVoC4rsMf2fTLW";
-    
-    const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+    const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${ELEVENLABS_VOICE_ID}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "xi-api-key": voiceApiKey,
+        "xi-api-key": ELEVENLABS_API_KEY,
       },
       body: JSON.stringify({ text }),
     });
