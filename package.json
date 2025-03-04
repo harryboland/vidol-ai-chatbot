@@ -4,12 +4,14 @@
   "description": "A React-based AI chatbot using OpenAI and ElevenLabs",
   "main": "VidolPrototype.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build"
+    "start": "node VidolPrototype.js"
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1"
+    "react-dom": "^18.2.0"
+  },
+  "engines": {
+    "node": ">=16"
   }
 }
+
